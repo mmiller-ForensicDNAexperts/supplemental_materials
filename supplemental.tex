@@ -1,0 +1,868 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{caption}
+\captionsetup[table]{skip=6pt}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+% fallback for those not using the hyperref driver hyperxmp:
+\makeatletter
+\@ifundefined{xmpquote}{\newcommand{\xmpquote}[1]{#1}}{}
+\makeatother
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{Supplementary Material}\label{supplementary-material}
+
+\subsection{Making Critical DNA Evidence Accessible: What Current
+Statistics Can Leave Unsaid for the
+Defense}\label{making-critical-dna-evidence-accessible-what-current-statistics-can-leave-unsaid-for-the-defense}
+
+\subsubsection{With an AI Assistant and an Invitation to Open
+Review}\label{with-an-ai-assistant-and-an-invitation-to-open-review}
+
+This supplement accompanies the manuscript bearing the title above. It
+contains the complete calculation script, instructions for running it,
+the numerical-results record, and a map of the supporting material.
+
+Use your supplied copy of the current \texttt{manuscript.md} or its
+corresponding PDF. The current \texttt{manuscript.md} is the controlling
+text; the PDF is a static distribution copy. The manuscript contains the
+mathematical definitions, assumptions, derivations, and interpretive
+boundaries.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Material
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Repository location
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+This supplement, \texttt{supplemental.md} &
+\href{https://github.com/mmiller-ForensicDNAexperts/supplemental_materials}{Supplemental
+materials repository} \\
+Repository guide and article-focused AI instructions, \texttt{rob.v1.md}
+& \href{https://github.com/mmiller-ForensicDNAexperts/rob.v1.md}{Rob
+repository} \\
+Separate vector figures, \texttt{figure-1.svg} through
+\texttt{figure-4.svg} &
+\href{https://github.com/mmiller-ForensicDNAexperts/Figures}{Figures
+repository} \\
+\end{longtable}
+}
+
+These links identify repositories, not direct file downloads or a public
+manuscript download location. Open the relevant repository and obtain
+the named file. A repository link alone does not establish that an AI
+system has accessed its contents.
+
+The current manuscript Markdown embeds the figures, and its
+corresponding PDF includes them. Separate SVG files are available for
+full-size viewing and access to the original vector figures; they are
+not required merely to display the embedded figures in a compatible
+viewer.
+
+All examples are synthetic. The script requires no external dataset or
+third-party Python packages.
+
+\section{S1. Map of supporting
+material}\label{s1.-map-of-supporting-material}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Material
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Manuscript location
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Implementation or supporting file
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Strict two-contributor construction and selected separate and joint LRs
+& Sections 3 and 14.1 & \texttt{strict()} in Section S3; Figure 1 \\
+Genotype posteriors and matched posterior--LR identities & Section 4 &
+\texttt{strict()} and \texttt{quantitative()} in Section S3 \\
+Population genotype filters & Section 5 & \texttt{strict()} in Section
+S3; Figure 2 \\
+Example D: fixed rarity with changing minor signal & Sections 6 and
+14.2--14.3 & \texttt{quantitative()} in Section S3; Figure 3 \\
+Example G: changing quantitative patterns with unknown co-contributors &
+Sections 7 and 14.2--14.3 & \texttt{quantitative()} in Section S3;
+Figure 4 \\
+Posterior recovery, uniform-reference comparisons, and multilocus
+alternatives & Appendix A & Selected finite examples and formula checks
+in \texttt{supporting()} in Section S3 \\
+Occupancy, source attribution, nuisance treatment, population filters,
+and conditional relatedness & Appendix B & \texttt{supporting()} in
+Section S3 \\
+Numerical results and programmed-check totals & Section 14.4 & Section
+S4 \\
+Figure files and their interpretation & Sections 3.4, 5, 6, and 7 &
+Section S5 \\
+\end{longtable}
+}
+
+The manuscript contains the mathematical definitions, assumptions,
+derivations, and interpretive boundaries. This supplement provides the
+implementation and numerical record; it does not replace those
+specifications.
+
+\section{S2. Running the
+calculations}\label{s2.-running-the-calculations}
+
+\subsection{S2.1 Requirements and
+execution}\label{s2.1-requirements-and-execution}
+
+Use Python 3. The recorded results in Section S4 were obtained using
+CPython 3.11.14.
+
+Copy the complete Python block in Section S3 into a plain-text file
+named \texttt{reproduce.py}, preserving indentation. Save it using UTF-8
+encoding.
+
+Run:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{python3}\NormalTok{ reproduce.py}
+\end{Highlighting}
+\end{Shaded}
+
+On systems where the Python 3 command is \texttt{python}, use:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{python}\NormalTok{ reproduce.py}
+\end{Highlighting}
+\end{Shaded}
+
+The script prints the Python version and implementation, numerical
+results, section-level check totals, and an overall total. It exits with
+status zero if all checks pass and status one if any programmed check
+fails. Failed checks are identified by name.
+
+To save the output:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{python3}\NormalTok{ reproduce.py }\OperatorTok{\textgreater{}}\NormalTok{ execution.txt}
+\end{Highlighting}
+\end{Shaded}
+
+The files \texttt{reproduce.py} and \texttt{execution.txt} are local
+working files created by these instructions. Their contents are included
+in this supplement as code and a numerical-results record; separate
+downloads are not required.
+
+\subsection{S2.2 Numerical
+implementation}\label{s2.2-numerical-implementation}
+
+The strict construction uses exact rational arithmetic through Python's
+\texttt{Fraction} class. Unknown-person genotypes follow the specified
+Hardy--Weinberg distribution. All ordered contributor pairs are
+enumerated.
+
+Examples D and G use exact rational inputs before conversion to
+floating-point likelihood calculations. Gaussian likelihoods are
+evaluated on the log scale, and marginalization uses log-sum-exp. The
+omitted Gaussian normalization factor is common to the configurations
+within each setting.
+
+For D, the major genotype is fixed and all twenty-one target-position
+genotypes are evaluated. For G, all twenty-one target-position genotypes
+and all ordered pairs of co-contributor genotypes are evaluated.
+Co-contributor weights are population probabilities.
+
+The script computes the different-genotype comparison \(B\) directly
+from the alternative likelihood sum rather than by subtracting a
+near-one posterior from one. It separately checks agreement with the
+posterior transformation.
+
+Printed floating-point values can differ in their final digits across
+environments. The script includes explicit tolerances for numerical
+identities and comparisons with displayed values.
+
+\subsection{S2.3 Scope of the checks}\label{s2.3-scope-of-the-checks}
+
+The 132 programmed checks comprise:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3000}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Group
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Checks
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Scope
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Strict construction and population filters & 22 & Exact enumeration,
+probabilities, assignment symmetry, profile calculations, and matched
+identities \\
+Six D/G settings & 78 & Inputs, generated signals, posterior
+normalization, identities, bounds, finite log likelihoods, and displayed
+numerical values \\
+Supporting examples & 32 & Selected finite enumerations and direct
+formula evaluations from Appendices A and B \\
+\textbf{Total} & \textbf{132} & Related assertions, not independent
+validations \\
+\end{longtable}
+}
+
+Supporting checks include direct evaluations of the source-posterior,
+occupancy, multilocus population-filter, and conditional-relatedness
+formulas. Such checks confirm the stated arithmetic, not the suitability
+of the assumptions for casework.
+
+The script covers the specified finite examples. It does not certify
+every general derivation, validate laboratory methods or commercial
+software, measure reader comprehension, or establish legal conclusions.
+
+\section{S3. Complete calculation
+script}\label{s3.-complete-calculation-script}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#!/usr/bin/env python3}
+\CommentTok{"""Numerical examples for:}
+\CommentTok{Making Critical DNA Evidence Accessible:}
+\CommentTok{What Current Statistics Can Leave Unsaid for the Defense}
+\CommentTok{With an AI Assistant and an Invitation to Open Review}
+
+\CommentTok{Python standard library only. Run: python3 reproduce.py}
+\CommentTok{Strict calculations use Fraction; Gaussian calculations use float/log{-}sum{-}exp.}
+\CommentTok{Tests cover specified finite examples, not all derivations or applications.}
+\CommentTok{"""}
+\ImportTok{import}\NormalTok{ math}
+\ImportTok{import}\NormalTok{ platform}
+\ImportTok{from}\NormalTok{ fractions }\ImportTok{import}\NormalTok{ Fraction }\ImportTok{as}\NormalTok{ F}
+\ImportTok{from}\NormalTok{ itertools }\ImportTok{import}\NormalTok{ combinations\_with\_replacement, product}
+
+\NormalTok{CHECKS }\OperatorTok{=}\NormalTok{ []}
+
+
+\KeywordTok{def}\NormalTok{ check(name, condition):}
+\NormalTok{    CHECKS.append((name, }\BuiltInTok{bool}\NormalTok{(condition)))}
+
+
+\KeywordTok{def}\NormalTok{ near(name, actual, expected, rel}\OperatorTok{=}\FloatTok{1e{-}10}\NormalTok{, absolute}\OperatorTok{=}\FloatTok{1e{-}12}\NormalTok{):}
+\NormalTok{    check(name, math.isclose(}\BuiltInTok{float}\NormalTok{(actual), }\BuiltInTok{float}\NormalTok{(expected),}
+\NormalTok{                            rel\_tol}\OperatorTok{=}\NormalTok{rel, abs\_tol}\OperatorTok{=}\NormalTok{absolute))}
+
+
+\KeywordTok{def}\NormalTok{ rounded(name, actual, expected, half\_unit):}
+    \CommentTok{\# A small floating{-}point allowance, not a model{-}error tolerance.}
+\NormalTok{    check(name, }\BuiltInTok{abs}\NormalTok{(}\BuiltInTok{float}\NormalTok{(actual) }\OperatorTok{{-}}\NormalTok{ expected) }\OperatorTok{\textless{}=}\NormalTok{ half\_unit }\OperatorTok{+} \FloatTok{1e{-}12}\NormalTok{)}
+
+
+\KeywordTok{def}\NormalTok{ show(name, value):}
+\NormalTok{    text }\OperatorTok{=} \BuiltInTok{format}\NormalTok{(value, }\StringTok{\textquotesingle{}.15g\textquotesingle{}}\NormalTok{) }\ControlFlowTok{if} \BuiltInTok{isinstance}\NormalTok{(value, }\BuiltInTok{float}\NormalTok{) }\ControlFlowTok{else} \BuiltInTok{str}\NormalTok{(value)}
+    \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f\textquotesingle{}}\SpecialCharTok{\{}\NormalTok{name}\SpecialCharTok{\}}\SpecialStringTok{: }\SpecialCharTok{\{}\NormalTok{text}\SpecialCharTok{\}}\SpecialStringTok{\textquotesingle{}}\NormalTok{)}
+
+
+\KeywordTok{def}\NormalTok{ states(freq):}
+\NormalTok{    gs }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(combinations\_with\_replacement(}\BuiltInTok{range}\NormalTok{(}\BuiltInTok{len}\NormalTok{(freq)), }\DecValTok{2}\NormalTok{))}
+\NormalTok{    ps }\OperatorTok{=}\NormalTok{ [freq[a] }\OperatorTok{*}\NormalTok{ freq[b] }\OperatorTok{*}\NormalTok{ (}\DecValTok{1} \ControlFlowTok{if}\NormalTok{ a }\OperatorTok{==}\NormalTok{ b }\ControlFlowTok{else} \DecValTok{2}\NormalTok{) }\ControlFlowTok{for}\NormalTok{ a, b }\KeywordTok{in}\NormalTok{ gs]}
+    \ControlFlowTok{return}\NormalTok{ gs, ps}
+
+
+\KeywordTok{def}\NormalTok{ lse(values):}
+\NormalTok{    values }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(values)}
+\NormalTok{    m }\OperatorTok{=} \BuiltInTok{max}\NormalTok{(values)}
+    \ControlFlowTok{return}\NormalTok{ m }\OperatorTok{+}\NormalTok{ math.log(math.fsum(math.exp(v }\OperatorTok{{-}}\NormalTok{ m) }\ControlFlowTok{for}\NormalTok{ v }\KeywordTok{in}\NormalTok{ values))}
+
+
+\KeywordTok{def}\NormalTok{ strict():}
+    \BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}}\CharTok{\textbackslash{}n}\StringTok{STRICT: exact enumeration\textquotesingle{}}\NormalTok{)}
+\NormalTok{    freq }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(}\BuiltInTok{map}\NormalTok{(F, [}\StringTok{\textquotesingle{}0.07\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}0.08\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}0.09\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}0.10\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}0.66\textquotesingle{}}\NormalTok{]))}
+\NormalTok{    gs, ps }\OperatorTok{=}\NormalTok{ states(freq)}
+\NormalTok{    obs, a, b }\OperatorTok{=} \BuiltInTok{set}\NormalTok{(}\BuiltInTok{range}\NormalTok{(}\DecValTok{4}\NormalTok{)), (}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{), (}\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{)  }\CommentTok{\# Zero{-}based alleles.}
+\NormalTok{    fit }\OperatorTok{=} \KeywordTok{lambda}\NormalTok{ g, h: }\BuiltInTok{set}\NormalTok{(g) }\OperatorTok{|} \BuiltInTok{set}\NormalTok{(h) }\OperatorTok{==}\NormalTok{ obs}
+\NormalTok{    pairs }\OperatorTok{=}\NormalTok{ [(i, j) }\ControlFlowTok{for}\NormalTok{ i, g }\KeywordTok{in} \BuiltInTok{enumerate}\NormalTok{(gs)}
+             \ControlFlowTok{for}\NormalTok{ j, h }\KeywordTok{in} \BuiltInTok{enumerate}\NormalTok{(gs) }\ControlFlowTok{if}\NormalTok{ fit(g, h)]}
+\NormalTok{    den }\OperatorTok{=} \BuiltInTok{sum}\NormalTok{((ps[i] }\OperatorTok{*}\NormalTok{ ps[j] }\ControlFlowTok{for}\NormalTok{ i, j }\KeywordTok{in}\NormalTok{ pairs), F(}\DecValTok{0}\NormalTok{))}
+\NormalTok{    ls }\OperatorTok{=}\NormalTok{ [}\BuiltInTok{sum}\NormalTok{((p }\ControlFlowTok{for}\NormalTok{ h, p }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(gs, ps) }\ControlFlowTok{if}\NormalTok{ fit(g, h)), F(}\DecValTok{0}\NormalTok{))}
+          \ControlFlowTok{for}\NormalTok{ g }\KeywordTok{in}\NormalTok{ gs]}
+\NormalTok{    post }\OperatorTok{=}\NormalTok{ [p }\OperatorTok{*}\NormalTok{ ll }\OperatorTok{/}\NormalTok{ den }\ControlFlowTok{for}\NormalTok{ p, ll }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(ps, ls)]}
+\NormalTok{    la, lb }\OperatorTok{=}\NormalTok{ ls[gs.index(a)], ls[gs.index(b)]}
+\NormalTok{    ra, rb }\OperatorTok{=}\NormalTok{ la }\OperatorTok{/}\NormalTok{ den, lb }\OperatorTok{/}\NormalTok{ den}
+\NormalTok{    check(}\StringTok{\textquotesingle{}strict population normalized\textquotesingle{}}\NormalTok{, }\BuiltInTok{sum}\NormalTok{(ps) }\OperatorTok{==} \DecValTok{1}\NormalTok{)}
+\NormalTok{    check(}\StringTok{\textquotesingle{}strict 15 genotypes\textquotesingle{}}\NormalTok{, }\BuiltInTok{len}\NormalTok{(gs) }\OperatorTok{==} \DecValTok{15}\NormalTok{)}
+\NormalTok{    check(}\StringTok{\textquotesingle{}strict 225 ordered pairs\textquotesingle{}}\NormalTok{, }\BuiltInTok{len}\NormalTok{(gs) }\OperatorTok{**} \DecValTok{2} \OperatorTok{==} \DecValTok{225}\NormalTok{)}
+\NormalTok{    check(}\StringTok{\textquotesingle{}strict six compatible ordered pairs\textquotesingle{}}\NormalTok{, }\BuiltInTok{len}\NormalTok{(pairs) }\OperatorTok{==} \DecValTok{6}\NormalTok{)}
+\NormalTok{    check(}\StringTok{\textquotesingle{}strict equal compatible prior products\textquotesingle{}}\NormalTok{,}
+          \BuiltInTok{len}\NormalTok{(\{ps[i] }\OperatorTok{*}\NormalTok{ ps[j] }\ControlFlowTok{for}\NormalTok{ i, j }\KeywordTok{in}\NormalTok{ pairs\}) }\OperatorTok{==} \DecValTok{1}\NormalTok{)}
+\NormalTok{    check(}\StringTok{\textquotesingle{}strict denominator\textquotesingle{}}\NormalTok{, den }\OperatorTok{==}\NormalTok{ F(}\StringTok{\textquotesingle{}0.0012096\textquotesingle{}}\NormalTok{))}
+\NormalTok{    check(}\StringTok{\textquotesingle{}strict A numerator\textquotesingle{}}\NormalTok{, la }\OperatorTok{==}\NormalTok{ F(}\StringTok{\textquotesingle{}0.014\textquotesingle{}}\NormalTok{))}
+\NormalTok{    check(}\StringTok{\textquotesingle{}strict B numerator\textquotesingle{}}\NormalTok{, lb }\OperatorTok{==}\NormalTok{ F(}\StringTok{\textquotesingle{}0.016\textquotesingle{}}\NormalTok{))}
+\NormalTok{    check(}\StringTok{\textquotesingle{}strict joint likelihood zero\textquotesingle{}}\NormalTok{, }\KeywordTok{not}\NormalTok{ fit(a, b))}
+\NormalTok{    check(}\StringTok{\textquotesingle{}strict six equal positive position posteriors\textquotesingle{}}\NormalTok{,}
+          \BuiltInTok{sorted}\NormalTok{(p }\ControlFlowTok{for}\NormalTok{ p }\KeywordTok{in}\NormalTok{ post }\ControlFlowTok{if}\NormalTok{ p) }\OperatorTok{==}\NormalTok{ [F(}\DecValTok{1}\NormalTok{, }\DecValTok{6}\NormalTok{)] }\OperatorTok{*} \DecValTok{6}\NormalTok{)}
+\NormalTok{    check(}\StringTok{\textquotesingle{}strict posterior normalized\textquotesingle{}}\NormalTok{, }\BuiltInTok{sum}\NormalTok{(post) }\OperatorTok{==} \DecValTok{1}\NormalTok{)}
+\NormalTok{    check(}\StringTok{\textquotesingle{}strict matched identities all genotypes\textquotesingle{}}\NormalTok{,}
+          \BuiltInTok{all}\NormalTok{(ll }\OperatorTok{/}\NormalTok{ den }\OperatorTok{==}\NormalTok{ w }\OperatorTok{/}\NormalTok{ p }\ControlFlowTok{for}\NormalTok{ ll, w, p }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(ls, post, ps)))}
+\NormalTok{    check(}\StringTok{\textquotesingle{}strict A assignment symmetry\textquotesingle{}}\NormalTok{,}
+\NormalTok{          la }\OperatorTok{==} \BuiltInTok{sum}\NormalTok{(p }\ControlFlowTok{for}\NormalTok{ g, p }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(gs, ps) }\ControlFlowTok{if}\NormalTok{ fit(g, a)))}
+\NormalTok{    check(}\StringTok{\textquotesingle{}strict B assignment symmetry\textquotesingle{}}\NormalTok{,}
+\NormalTok{          lb }\OperatorTok{==} \BuiltInTok{sum}\NormalTok{(p }\ControlFlowTok{for}\NormalTok{ g, p }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(gs, ps) }\ControlFlowTok{if}\NormalTok{ fit(g, b)))}
+\NormalTok{    check(}\StringTok{\textquotesingle{}strict profile count\textquotesingle{}}\NormalTok{, }\DecValTok{6} \OperatorTok{**} \DecValTok{13} \OperatorTok{==} \DecValTok{13060694016}\NormalTok{)}
+\NormalTok{    near(}\StringTok{\textquotesingle{}strict A full profile\textquotesingle{}}\NormalTok{, ra }\OperatorTok{**} \DecValTok{13}\NormalTok{, }\FloatTok{6.688386286845605e13}\NormalTok{)}
+\NormalTok{    near(}\StringTok{\textquotesingle{}strict B full profile\textquotesingle{}}\NormalTok{, rb }\OperatorTok{**} \DecValTok{13}\NormalTok{, }\FloatTok{3.795042627926862e14}\NormalTok{)}
+\NormalTok{    near(}\StringTok{\textquotesingle{}strict profile posterior\textquotesingle{}}\NormalTok{, F(}\DecValTok{1}\NormalTok{, }\DecValTok{6}\NormalTok{) }\OperatorTok{**} \DecValTok{13}\NormalTok{, }\FloatTok{7.656560966629723e{-}11}\NormalTok{,}
+\NormalTok{         absolute}\OperatorTok{=}\FloatTok{1e{-}24}\NormalTok{)}
+\NormalTok{    check(}\StringTok{\textquotesingle{}strict multilocus matched identity\textquotesingle{}}\NormalTok{,}
+\NormalTok{          ra }\OperatorTok{**} \DecValTok{13} \OperatorTok{==}\NormalTok{ (F(}\DecValTok{1}\NormalTok{, }\DecValTok{6}\NormalTok{) }\OperatorTok{/}\NormalTok{ ps[gs.index(a)]) }\OperatorTok{**} \DecValTok{13}\NormalTok{)}
+\NormalTok{    comp }\OperatorTok{=} \BuiltInTok{sum}\NormalTok{(p }\ControlFlowTok{for}\NormalTok{ g, p }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(gs, ps) }\ControlFlowTok{if} \BuiltInTok{any}\NormalTok{(fit(g, h) }\ControlFlowTok{for}\NormalTok{ h }\KeywordTok{in}\NormalTok{ gs))}
+\NormalTok{    inside }\OperatorTok{=} \BuiltInTok{sum}\NormalTok{(p }\ControlFlowTok{for}\NormalTok{ g, p }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(gs, ps) }\ControlFlowTok{if} \BuiltInTok{set}\NormalTok{(g) }\OperatorTok{\textless{}=}\NormalTok{ obs)}
+\NormalTok{    check(}\StringTok{\textquotesingle{}strict target population mass\textquotesingle{}}\NormalTok{, ps[gs.index(a)] }\OperatorTok{==}\NormalTok{ F(}\StringTok{\textquotesingle{}0.0144\textquotesingle{}}\NormalTok{))}
+\NormalTok{    check(}\StringTok{\textquotesingle{}strict compatibility mass\textquotesingle{}}\NormalTok{, comp }\OperatorTok{==}\NormalTok{ F(}\StringTok{\textquotesingle{}0.0862\textquotesingle{}}\NormalTok{))}
+\NormalTok{    check(}\StringTok{\textquotesingle{}strict inside{-}set mass\textquotesingle{}}\NormalTok{, inside }\OperatorTok{==}\NormalTok{ F(}\StringTok{\textquotesingle{}0.1156\textquotesingle{}}\NormalTok{))}
+    \ControlFlowTok{for}\NormalTok{ name, val }\KeywordTok{in}\NormalTok{ [(}\StringTok{\textquotesingle{}denominator\textquotesingle{}}\NormalTok{, den), (}\StringTok{\textquotesingle{}A numerator\textquotesingle{}}\NormalTok{, la),}
+\NormalTok{                      (}\StringTok{\textquotesingle{}B numerator\textquotesingle{}}\NormalTok{, lb), (}\StringTok{\textquotesingle{}A one{-}locus LR\textquotesingle{}}\NormalTok{, }\BuiltInTok{float}\NormalTok{(ra)),}
+\NormalTok{                      (}\StringTok{\textquotesingle{}B one{-}locus LR\textquotesingle{}}\NormalTok{, }\BuiltInTok{float}\NormalTok{(rb)), (}\StringTok{\textquotesingle{}joint LR\textquotesingle{}}\NormalTok{, }\DecValTok{0}\NormalTok{),}
+\NormalTok{                      (}\StringTok{\textquotesingle{}A thirteen{-}locus LR\textquotesingle{}}\NormalTok{, }\BuiltInTok{float}\NormalTok{(ra }\OperatorTok{**} \DecValTok{13}\NormalTok{)),}
+\NormalTok{                      (}\StringTok{\textquotesingle{}B thirteen{-}locus LR\textquotesingle{}}\NormalTok{, }\BuiltInTok{float}\NormalTok{(rb }\OperatorTok{**} \DecValTok{13}\NormalTok{)),}
+\NormalTok{                      (}\StringTok{\textquotesingle{}position profile posterior\textquotesingle{}}\NormalTok{, }\BuiltInTok{float}\NormalTok{(F(}\DecValTok{1}\NormalTok{, }\DecValTok{6}\NormalTok{) }\OperatorTok{**} \DecValTok{13}\NormalTok{)),}
+\NormalTok{                      (}\StringTok{\textquotesingle{}compatible position profiles\textquotesingle{}}\NormalTok{, }\DecValTok{6} \OperatorTok{**} \DecValTok{13}\NormalTok{),}
+\NormalTok{                      (}\StringTok{\textquotesingle{}compatibility mass\textquotesingle{}}\NormalTok{, }\BuiltInTok{float}\NormalTok{(comp)),}
+\NormalTok{                      (}\StringTok{\textquotesingle{}inside{-}set mass\textquotesingle{}}\NormalTok{, }\BuiltInTok{float}\NormalTok{(inside))]:}
+\NormalTok{        show(name, val)}
+
+
+\KeywordTok{def}\NormalTok{ quantitative():}
+    \BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}}\CharTok{\textbackslash{}n}\StringTok{D/G: full genotype enumeration with log{-}sum{-}exp\textquotesingle{}}\NormalTok{)}
+\NormalTok{    freq }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(}\BuiltInTok{map}\NormalTok{(F, [}\StringTok{\textquotesingle{}0.30\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}0.24\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}0.18\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}0.13\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}0.09\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}0.06\textquotesingle{}}\NormalTok{]))}
+\NormalTok{    gs, exact\_ps }\OperatorTok{=}\NormalTok{ states(freq)}
+\NormalTok{    lp }\OperatorTok{=}\NormalTok{ [math.log(}\BuiltInTok{float}\NormalTok{(p)) }\ControlFlowTok{for}\NormalTok{ p }\KeywordTok{in}\NormalTok{ exact\_ps]}
+\NormalTok{    dose }\OperatorTok{=}\NormalTok{ [[F(g.count(k), }\DecValTok{2}\NormalTok{) }\ControlFlowTok{for}\NormalTok{ k }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{6}\NormalTok{)] }\ControlFlowTok{for}\NormalTok{ g }\KeywordTok{in}\NormalTok{ gs]}
+\NormalTok{    major, target }\OperatorTok{=}\NormalTok{ gs.index((}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{)), gs.index((}\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{))}
+\NormalTok{    generating }\OperatorTok{=}\NormalTok{ [target, gs.index((}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)), major]}
+\NormalTok{    ft, sigma }\OperatorTok{=}\NormalTok{ exact\_ps[target], }\BuiltInTok{float}\NormalTok{(F(}\StringTok{\textquotesingle{}0.035\textquotesingle{}}\NormalTok{))}
+\NormalTok{    cases }\OperatorTok{=}\NormalTok{ [}
+\NormalTok{        (}\StringTok{\textquotesingle{}D1\textquotesingle{}}\NormalTok{, (F(}\DecValTok{1}\NormalTok{), F(}\DecValTok{0}\NormalTok{)), (F(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{), F(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{), F(}\DecValTok{0}\NormalTok{), F(}\DecValTok{0}\NormalTok{), F(}\DecValTok{0}\NormalTok{), F(}\DecValTok{0}\NormalTok{))),}
+\NormalTok{        (}\StringTok{\textquotesingle{}D6\textquotesingle{}}\NormalTok{, (F(}\DecValTok{8}\NormalTok{,}\DecValTok{9}\NormalTok{), F(}\DecValTok{1}\NormalTok{,}\DecValTok{9}\NormalTok{)), (F(}\DecValTok{4}\NormalTok{,}\DecValTok{9}\NormalTok{), F(}\DecValTok{4}\NormalTok{,}\DecValTok{9}\NormalTok{), F(}\DecValTok{0}\NormalTok{), F(}\DecValTok{0}\NormalTok{), F(}\DecValTok{1}\NormalTok{,}\DecValTok{18}\NormalTok{), F(}\DecValTok{1}\NormalTok{,}\DecValTok{18}\NormalTok{))),}
+\NormalTok{        (}\StringTok{\textquotesingle{}D10\textquotesingle{}}\NormalTok{, (F(}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{), F(}\DecValTok{1}\NormalTok{,}\DecValTok{5}\NormalTok{)), (F(}\DecValTok{2}\NormalTok{,}\DecValTok{5}\NormalTok{), F(}\DecValTok{2}\NormalTok{,}\DecValTok{5}\NormalTok{), F(}\DecValTok{0}\NormalTok{), F(}\DecValTok{0}\NormalTok{), F(}\DecValTok{1}\NormalTok{,}\DecValTok{10}\NormalTok{), F(}\DecValTok{1}\NormalTok{,}\DecValTok{10}\NormalTok{))),}
+\NormalTok{        (}\StringTok{\textquotesingle{}G1\textquotesingle{}}\NormalTok{, (F(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{),)}\OperatorTok{*}\DecValTok{3}\NormalTok{, (F(}\DecValTok{1}\NormalTok{,}\DecValTok{6}\NormalTok{),)}\OperatorTok{*}\DecValTok{6}\NormalTok{),}
+\NormalTok{        (}\StringTok{\textquotesingle{}G4\textquotesingle{}}\NormalTok{, (F(}\DecValTok{19}\NormalTok{,}\DecValTok{45}\NormalTok{), F(}\DecValTok{29}\NormalTok{,}\DecValTok{90}\NormalTok{), F(}\DecValTok{23}\NormalTok{,}\DecValTok{90}\NormalTok{)),}
+\NormalTok{         (F(}\DecValTok{23}\NormalTok{,}\DecValTok{180}\NormalTok{), F(}\DecValTok{23}\NormalTok{,}\DecValTok{180}\NormalTok{), F(}\DecValTok{29}\NormalTok{,}\DecValTok{180}\NormalTok{), F(}\DecValTok{29}\NormalTok{,}\DecValTok{180}\NormalTok{), F(}\DecValTok{19}\NormalTok{,}\DecValTok{90}\NormalTok{), F(}\DecValTok{19}\NormalTok{,}\DecValTok{90}\NormalTok{))),}
+\NormalTok{        (}\StringTok{\textquotesingle{}G10\textquotesingle{}}\NormalTok{, (F(}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{), F(}\DecValTok{3}\NormalTok{,}\DecValTok{10}\NormalTok{), F(}\DecValTok{1}\NormalTok{,}\DecValTok{10}\NormalTok{)),}
+\NormalTok{         (F(}\DecValTok{1}\NormalTok{,}\DecValTok{20}\NormalTok{), F(}\DecValTok{1}\NormalTok{,}\DecValTok{20}\NormalTok{), F(}\DecValTok{3}\NormalTok{,}\DecValTok{20}\NormalTok{), F(}\DecValTok{3}\NormalTok{,}\DecValTok{20}\NormalTok{), F(}\DecValTok{3}\NormalTok{,}\DecValTok{10}\NormalTok{), F(}\DecValTok{3}\NormalTok{,}\DecValTok{10}\NormalTok{)))}
+\NormalTok{    ]}
+    \CommentTok{\# Main{-}table values and half{-}units of their last displayed decimal places.}
+\NormalTok{    expected }\OperatorTok{=}\NormalTok{ \{}
+        \StringTok{\textquotesingle{}D1\textquotesingle{}}\NormalTok{: (}\FloatTok{1.}\NormalTok{, }\FloatTok{0.047619}\NormalTok{, }\FloatTok{0.}\NormalTok{, }\FloatTok{0.0000005}\NormalTok{),}
+        \StringTok{\textquotesingle{}D6\textquotesingle{}}\NormalTok{: (}\FloatTok{27.9507}\NormalTok{, }\FloatTok{0.541729}\NormalTok{, }\FloatTok{0.00005}\NormalTok{, }\FloatTok{0.0000005}\NormalTok{),}
+        \StringTok{\textquotesingle{}D10\textquotesingle{}}\NormalTok{: (}\FloatTok{91.9453}\NormalTok{, }\FloatTok{0.997158}\NormalTok{, }\FloatTok{0.00005}\NormalTok{, }\FloatTok{0.0000005}\NormalTok{),}
+        \StringTok{\textquotesingle{}G1\textquotesingle{}}\NormalTok{: (}\FloatTok{6.17284}\NormalTok{, }\FloatTok{0.201837}\NormalTok{, }\FloatTok{0.000005}\NormalTok{, }\FloatTok{0.0000005}\NormalTok{),}
+        \StringTok{\textquotesingle{}G4\textquotesingle{}}\NormalTok{: (}\FloatTok{63.6999}\NormalTok{, }\FloatTok{0.826856}\NormalTok{, }\FloatTok{0.00005}\NormalTok{, }\FloatTok{0.0000005}\NormalTok{),}
+        \StringTok{\textquotesingle{}G10\textquotesingle{}}\NormalTok{: (}\FloatTok{92.5924}\NormalTok{, }\FloatTok{0.99999875}\NormalTok{, }\FloatTok{0.00005}\NormalTok{, }\FloatTok{0.000000005}\NormalTok{)}
+\NormalTok{    \}}
+\NormalTok{    detailed }\OperatorTok{=}\NormalTok{ \{}
+        \StringTok{\textquotesingle{}D1\textquotesingle{}}\NormalTok{: (}\FloatTok{1.}\NormalTok{, }\FloatTok{0.0476190476190}\NormalTok{),}
+        \StringTok{\textquotesingle{}D6\textquotesingle{}}\NormalTok{: (}\FloatTok{27.9507017179652}\NormalTok{, }\FloatTok{0.5417285249059}\NormalTok{),}
+        \StringTok{\textquotesingle{}D10\textquotesingle{}}\NormalTok{: (}\FloatTok{91.9452838579187}\NormalTok{, }\FloatTok{0.9971583061431}\NormalTok{),}
+        \StringTok{\textquotesingle{}G1\textquotesingle{}}\NormalTok{: (}\FloatTok{6.17283949624454}\NormalTok{, }\FloatTok{0.2018372361458}\NormalTok{),}
+        \StringTok{\textquotesingle{}G4\textquotesingle{}}\NormalTok{: (}\FloatTok{63.6999391814617}\NormalTok{, }\FloatTok{0.8268558198124}\NormalTok{),}
+        \StringTok{\textquotesingle{}G10\textquotesingle{}}\NormalTok{: (}\FloatTok{92.5923708630398}\NormalTok{, }\FloatTok{0.9999987479771}\NormalTok{)}
+\NormalTok{    \}}
+\NormalTok{    check(}\StringTok{\textquotesingle{}D/G 21 genotypes and normalized population\textquotesingle{}}\NormalTok{,}
+          \BuiltInTok{len}\NormalTok{(gs) }\OperatorTok{==} \DecValTok{21} \KeywordTok{and} \BuiltInTok{sum}\NormalTok{(exact\_ps) }\OperatorTok{==} \DecValTok{1}\NormalTok{)}
+\NormalTok{    check(}\StringTok{\textquotesingle{}D/G target frequency\textquotesingle{}}\NormalTok{, ft }\OperatorTok{==}\NormalTok{ F(}\StringTok{\textquotesingle{}0.0108\textquotesingle{}}\NormalTok{))}
+    \ControlFlowTok{for}\NormalTok{ name, phi, y }\KeywordTok{in}\NormalTok{ cases:}
+\NormalTok{        ids }\OperatorTok{=}\NormalTok{ [major, target] }\ControlFlowTok{if}\NormalTok{ name.startswith(}\StringTok{\textquotesingle{}D\textquotesingle{}}\NormalTok{) }\ControlFlowTok{else}\NormalTok{ generating}
+\NormalTok{        check(name }\OperatorTok{+} \StringTok{\textquotesingle{} fraction sum\textquotesingle{}}\NormalTok{, }\BuiltInTok{sum}\NormalTok{(phi) }\OperatorTok{==} \DecValTok{1}\NormalTok{)}
+\NormalTok{        check(name }\OperatorTok{+} \StringTok{\textquotesingle{} exact generated signal\textquotesingle{}}\NormalTok{,}
+              \BuiltInTok{tuple}\NormalTok{(}\BuiltInTok{sum}\NormalTok{(phi[j] }\OperatorTok{*}\NormalTok{ dose[i][k] }\ControlFlowTok{for}\NormalTok{ j, i }\KeywordTok{in} \BuiltInTok{enumerate}\NormalTok{(ids))}
+                    \ControlFlowTok{for}\NormalTok{ k }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{6}\NormalTok{)) }\OperatorTok{==}\NormalTok{ y)}
+        \CommentTok{\# Evaluate floats after exact input and generator checks.}
+\NormalTok{        contributions }\OperatorTok{=}\NormalTok{ [[[}\BuiltInTok{float}\NormalTok{(f }\OperatorTok{*}\NormalTok{ x) }\ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in}\NormalTok{ d] }\ControlFlowTok{for}\NormalTok{ d }\KeywordTok{in}\NormalTok{ dose] }\ControlFlowTok{for}\NormalTok{ f }\KeywordTok{in}\NormalTok{ phi]}
+\NormalTok{        yf }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(}\BuiltInTok{map}\NormalTok{(}\BuiltInTok{float}\NormalTok{, y))}
+
+        \KeywordTok{def}\NormalTok{ kernel(indices):}
+\NormalTok{            mu }\OperatorTok{=}\NormalTok{ [math.fsum(contributions[j][i][k] }\ControlFlowTok{for}\NormalTok{ j, i }\KeywordTok{in} \BuiltInTok{enumerate}\NormalTok{(indices))}
+                  \ControlFlowTok{for}\NormalTok{ k }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{6}\NormalTok{)]}
+            \ControlFlowTok{return} \OperatorTok{{-}}\NormalTok{math.fsum((v }\OperatorTok{{-}}\NormalTok{ m) }\OperatorTok{**} \DecValTok{2} \ControlFlowTok{for}\NormalTok{ v, m }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(yf, mu)) }\OperatorTok{/}\NormalTok{ (}\DecValTok{2} \OperatorTok{*}\NormalTok{ sigma }\OperatorTok{**} \DecValTok{2}\NormalTok{)}
+
+        \ControlFlowTok{if}\NormalTok{ name.startswith(}\StringTok{\textquotesingle{}D\textquotesingle{}}\NormalTok{):}
+\NormalTok{            ll }\OperatorTok{=}\NormalTok{ [kernel((major, i)) }\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{21}\NormalTok{)]}
+        \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{            ll }\OperatorTok{=}\NormalTok{ [lse(lp[j] }\OperatorTok{+}\NormalTok{ lp[k] }\OperatorTok{+}\NormalTok{ kernel((i, j, k))}
+                      \ControlFlowTok{for}\NormalTok{ j, k }\KeywordTok{in}\NormalTok{ product(}\BuiltInTok{range}\NormalTok{(}\DecValTok{21}\NormalTok{), repeat}\OperatorTok{=}\DecValTok{2}\NormalTok{)) }\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{21}\NormalTok{)]}
+\NormalTok{        zu, zp }\OperatorTok{=}\NormalTok{ lse(ll), lse(p }\OperatorTok{+}\NormalTok{ v }\ControlFlowTok{for}\NormalTok{ p, v }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(lp, ll))}
+\NormalTok{        wu }\OperatorTok{=}\NormalTok{ [math.exp(v }\OperatorTok{{-}}\NormalTok{ zu) }\ControlFlowTok{for}\NormalTok{ v }\KeywordTok{in}\NormalTok{ ll]}
+\NormalTok{        wp }\OperatorTok{=}\NormalTok{ [math.exp(p }\OperatorTok{+}\NormalTok{ v }\OperatorTok{{-}}\NormalTok{ zp) }\ControlFlowTok{for}\NormalTok{ p, v }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(lp, ll)]}
+\NormalTok{        r }\OperatorTok{=}\NormalTok{ math.exp(ll[target] }\OperatorTok{{-}}\NormalTok{ zp)}
+        \CommentTok{\# Direct alternative sum avoids subtracting a near{-}one posterior.}
+\NormalTok{        b }\OperatorTok{=}\NormalTok{ math.exp(math.log(}\DecValTok{20}\NormalTok{) }\OperatorTok{+}\NormalTok{ ll[target] }\OperatorTok{{-}}\NormalTok{ lse(v }\ControlFlowTok{for}\NormalTok{ i, v }\KeywordTok{in} \BuiltInTok{enumerate}\NormalTok{(ll) }\ControlFlowTok{if}\NormalTok{ i }\OperatorTok{!=}\NormalTok{ target))}
+\NormalTok{        near(name }\OperatorTok{+} \StringTok{\textquotesingle{} uniform posterior sum\textquotesingle{}}\NormalTok{, math.fsum(wu), }\DecValTok{1}\NormalTok{)}
+\NormalTok{        near(name }\OperatorTok{+} \StringTok{\textquotesingle{} population posterior sum\textquotesingle{}}\NormalTok{, math.fsum(wp), }\DecValTok{1}\NormalTok{)}
+\NormalTok{        near(name }\OperatorTok{+} \StringTok{\textquotesingle{} matched identity\textquotesingle{}}\NormalTok{, r, wp[target] }\OperatorTok{/} \BuiltInTok{float}\NormalTok{(ft))}
+\NormalTok{        near(name }\OperatorTok{+} \StringTok{\textquotesingle{} uniform comparison identity\textquotesingle{}}\NormalTok{, b, }\DecValTok{20} \OperatorTok{*}\NormalTok{ wu[target] }\OperatorTok{/}\NormalTok{ (}\DecValTok{1} \OperatorTok{{-}}\NormalTok{ wu[target]), rel}\OperatorTok{=}\FloatTok{1e{-}8}\NormalTok{)}
+\NormalTok{        check(name }\OperatorTok{+} \StringTok{\textquotesingle{} frequency bound\textquotesingle{}}\NormalTok{, r }\OperatorTok{\textless{}=} \DecValTok{1} \OperatorTok{/} \BuiltInTok{float}\NormalTok{(ft) }\OperatorTok{+} \FloatTok{1e{-}10}\NormalTok{)}
+\NormalTok{        check(name }\OperatorTok{+} \StringTok{\textquotesingle{} all log likelihoods finite\textquotesingle{}}\NormalTok{, }\BuiltInTok{all}\NormalTok{(math.isfinite(x) }\ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in}\NormalTok{ ll))}
+\NormalTok{        er, ew, tr, tw }\OperatorTok{=}\NormalTok{ expected[name]}
+\NormalTok{        rounded(name }\OperatorTok{+} \StringTok{\textquotesingle{} displayed R\textquotesingle{}}\NormalTok{, r, er, tr)}
+\NormalTok{        rounded(name }\OperatorTok{+} \StringTok{\textquotesingle{} displayed uniform weight\textquotesingle{}}\NormalTok{, wu[target], ew, tw)}
+\NormalTok{        near(name }\OperatorTok{+} \StringTok{\textquotesingle{} detailed R\textquotesingle{}}\NormalTok{, r, detailed[name][}\DecValTok{0}\NormalTok{])}
+\NormalTok{        near(name }\OperatorTok{+} \StringTok{\textquotesingle{} detailed uniform weight\textquotesingle{}}\NormalTok{, wu[target], detailed[name][}\DecValTok{1}\NormalTok{])}
+        \ControlFlowTok{if}\NormalTok{ name }\OperatorTok{==} \StringTok{\textquotesingle{}D1\textquotesingle{}}\NormalTok{:}
+\NormalTok{            check(}\StringTok{\textquotesingle{}D1 equal log likelihoods\textquotesingle{}}\NormalTok{, }\BuiltInTok{len}\NormalTok{(}\BuiltInTok{set}\NormalTok{(ll)) }\OperatorTok{==} \DecValTok{1}\NormalTok{)}
+\NormalTok{            near(}\StringTok{\textquotesingle{}D1 population posterior equals prior\textquotesingle{}}\NormalTok{, wp[target], ft)}
+        \ControlFlowTok{if}\NormalTok{ name }\OperatorTok{==} \StringTok{\textquotesingle{}D6\textquotesingle{}}\NormalTok{:}
+\NormalTok{            rounded(}\StringTok{\textquotesingle{}D6 population posterior display\textquotesingle{}}\NormalTok{, wp[target], }\FloatTok{0.301868}\NormalTok{, }\FloatTok{0.0000005}\NormalTok{)}
+        \ControlFlowTok{if}\NormalTok{ name }\OperatorTok{==} \StringTok{\textquotesingle{}G10\textquotesingle{}}\NormalTok{:}
+\NormalTok{            near(}\StringTok{\textquotesingle{}G10 detailed B\textquotesingle{}}\NormalTok{, b, }\FloatTok{15974128.318833357}\NormalTok{, rel}\OperatorTok{=}\FloatTok{1e{-}8}\NormalTok{)}
+        \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f\textquotesingle{}}\SpecialCharTok{\{}\NormalTok{name}\SpecialCharTok{\}}\SpecialStringTok{: R=}\SpecialCharTok{\{}\NormalTok{r}\SpecialCharTok{:.15g\}}\SpecialStringTok{; w\_U=}\SpecialCharTok{\{}\NormalTok{wu[target]}\SpecialCharTok{:.15g\}}\SpecialStringTok{; w\_pi=}\SpecialCharTok{\{}\NormalTok{wp[target]}\SpecialCharTok{:.15g\}}\SpecialStringTok{; B=}\SpecialCharTok{\{}\NormalTok{b}\SpecialCharTok{:.15g\}}\SpecialStringTok{\textquotesingle{}}\NormalTok{)}
+
+
+\KeywordTok{def}\NormalTok{ supporting():}
+    \BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}}\CharTok{\textbackslash{}n}\StringTok{SUPPORTING EXAMPLES: enumeration or explicit formulas as indicated\textquotesingle{}}\NormalTok{)}
+    \CommentTok{\# A.1: enumerate the specified seven allowed configurations.}
+\NormalTok{    allowed }\OperatorTok{=}\NormalTok{ [(i, j) }\ControlFlowTok{for}\NormalTok{ i, j }\KeywordTok{in}\NormalTok{ product(}\BuiltInTok{range}\NormalTok{(}\DecValTok{3}\NormalTok{), repeat}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+               \ControlFlowTok{if}\NormalTok{ (i, j) }\KeywordTok{not} \KeywordTok{in}\NormalTok{ [(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{), (}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)]]}
+\NormalTok{    marginal }\OperatorTok{=}\NormalTok{ [F(}\BuiltInTok{sum}\NormalTok{(i }\OperatorTok{==}\NormalTok{ k }\ControlFlowTok{for}\NormalTok{ i, j }\KeywordTok{in}\NormalTok{ allowed), }\DecValTok{7}\NormalTok{) }\ControlFlowTok{for}\NormalTok{ k }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{3}\NormalTok{)]}
+\NormalTok{    check(}\StringTok{\textquotesingle{}A1 marginal\textquotesingle{}}\NormalTok{, marginal }\OperatorTok{==}\NormalTok{ [F(}\DecValTok{2}\NormalTok{,}\DecValTok{7}\NormalTok{), F(}\DecValTok{3}\NormalTok{,}\DecValTok{7}\NormalTok{), F(}\DecValTok{2}\NormalTok{,}\DecValTok{7}\NormalTok{)])}
+    \CommentTok{\# A.2: two finite{-}state counterexamples.}
+\NormalTok{    prior }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(}\BuiltInTok{map}\NormalTok{(F, [}\StringTok{\textquotesingle{}0.1\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}0.8\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}0.1\textquotesingle{}}\NormalTok{]))}
+    \ControlFlowTok{for}\NormalTok{ label, ls, expected }\KeywordTok{in}\NormalTok{ [(}\StringTok{\textquotesingle{}original\textquotesingle{}}\NormalTok{, [}\StringTok{\textquotesingle{}0.6\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}0.3\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}0.1\textquotesingle{}}\NormalTok{], }\FloatTok{1.935484}\NormalTok{),}
+\NormalTok{                                (}\StringTok{\textquotesingle{}swapped\textquotesingle{}}\NormalTok{, [}\StringTok{\textquotesingle{}0.6\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}0.1\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}0.3\textquotesingle{}}\NormalTok{], }\FloatTok{3.529412}\NormalTok{)]:}
+\NormalTok{        ls }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(}\BuiltInTok{map}\NormalTok{(F, ls))}
+\NormalTok{        b, r }\OperatorTok{=} \DecValTok{2} \OperatorTok{*}\NormalTok{ ls[}\DecValTok{0}\NormalTok{] }\OperatorTok{/} \BuiltInTok{sum}\NormalTok{(ls[}\DecValTok{1}\NormalTok{:]), ls[}\DecValTok{0}\NormalTok{] }\OperatorTok{/} \BuiltInTok{sum}\NormalTok{(p}\OperatorTok{*}\NormalTok{l }\ControlFlowTok{for}\NormalTok{ p,l }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(prior, ls))}
+\NormalTok{        check(}\StringTok{\textquotesingle{}A2 \textquotesingle{}} \OperatorTok{+}\NormalTok{ label }\OperatorTok{+} \StringTok{\textquotesingle{} B\textquotesingle{}}\NormalTok{, b }\OperatorTok{==} \DecValTok{3}\NormalTok{)}
+\NormalTok{        rounded(}\StringTok{\textquotesingle{}A2 \textquotesingle{}} \OperatorTok{+}\NormalTok{ label }\OperatorTok{+} \StringTok{\textquotesingle{} R\textquotesingle{}}\NormalTok{, r, expected, }\FloatTok{0.0000005}\NormalTok{)}
+\NormalTok{        show(}\StringTok{\textquotesingle{}A2 \textquotesingle{}} \OperatorTok{+}\NormalTok{ label }\OperatorTok{+} \StringTok{\textquotesingle{} R\textquotesingle{}}\NormalTok{, }\BuiltInTok{float}\NormalTok{(r))}
+\NormalTok{    rounded(}\StringTok{\textquotesingle{}A3 universe multiplier\textquotesingle{}}\NormalTok{, }\DecValTok{324} \OperatorTok{**} \DecValTok{20}\NormalTok{, }\FloatTok{1.6251753e50}\NormalTok{, }\FloatTok{0.00000005e50}\NormalTok{)}
+\NormalTok{    check(}\StringTok{\textquotesingle{}A4 rounded posterior bound\textquotesingle{}}\NormalTok{, }\DecValTok{54} \OperatorTok{*}\NormalTok{ F(}\StringTok{\textquotesingle{}0.99995\textquotesingle{}}\NormalTok{) }\OperatorTok{/}\NormalTok{ F(}\StringTok{\textquotesingle{}0.00005\textquotesingle{}}\NormalTok{) }\OperatorTok{==} \DecValTok{1079946}\NormalTok{)}
+    \CommentTok{\# A.5: enumerate all observation probabilities and both alternatives.}
+\NormalTok{    n, hit }\OperatorTok{=} \DecValTok{55}\NormalTok{, F(}\StringTok{\textquotesingle{}0.84\textquotesingle{}}\NormalTok{)}
+\NormalTok{    miss }\OperatorTok{=}\NormalTok{ (}\DecValTok{1} \OperatorTok{{-}}\NormalTok{ hit) }\OperatorTok{/}\NormalTok{ (n }\OperatorTok{{-}} \DecValTok{1}\NormalTok{)}
+\NormalTok{    numer }\OperatorTok{=}\NormalTok{ [hit] }\OperatorTok{+}\NormalTok{ [miss] }\OperatorTok{*}\NormalTok{ (n }\OperatorTok{{-}} \DecValTok{1}\NormalTok{)}
+\NormalTok{    alt\_gen }\OperatorTok{=}\NormalTok{ [miss] }\OperatorTok{+}\NormalTok{ [(hit }\OperatorTok{+}\NormalTok{ (n }\OperatorTok{{-}} \DecValTok{2}\NormalTok{) }\OperatorTok{*}\NormalTok{ miss) }\OperatorTok{/}\NormalTok{ (n }\OperatorTok{{-}} \DecValTok{1}\NormalTok{)] }\OperatorTok{*}\NormalTok{ (n }\OperatorTok{{-}} \DecValTok{1}\NormalTok{)}
+\NormalTok{    alt\_person }\OperatorTok{=}\NormalTok{ [F(}\DecValTok{1}\NormalTok{, n)] }\OperatorTok{*}\NormalTok{ n}
+\NormalTok{    bs }\OperatorTok{=}\NormalTok{ [p}\OperatorTok{/}\NormalTok{q }\ControlFlowTok{for}\NormalTok{ p,q }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(numer, alt\_gen)]}
+\NormalTok{    rs }\OperatorTok{=}\NormalTok{ [p}\OperatorTok{/}\NormalTok{q }\ControlFlowTok{for}\NormalTok{ p,q }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(numer, alt\_person)]}
+\NormalTok{    check(}\StringTok{\textquotesingle{}A5 distributions normalized\textquotesingle{}}\NormalTok{, }\BuiltInTok{sum}\NormalTok{(numer) }\OperatorTok{==} \BuiltInTok{sum}\NormalTok{(alt\_gen) }\OperatorTok{==} \BuiltInTok{sum}\NormalTok{(alt\_person) }\OperatorTok{==} \DecValTok{1}\NormalTok{)}
+\NormalTok{    check(}\StringTok{\textquotesingle{}A5 B expectation under genotype alternative\textquotesingle{}}\NormalTok{, }\BuiltInTok{sum}\NormalTok{(b}\OperatorTok{*}\NormalTok{q }\ControlFlowTok{for}\NormalTok{ b,q }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(bs, alt\_gen)) }\OperatorTok{==} \DecValTok{1}\NormalTok{)}
+\NormalTok{    check(}\StringTok{\textquotesingle{}A5 R expectation under person alternative\textquotesingle{}}\NormalTok{, }\BuiltInTok{sum}\NormalTok{(r}\OperatorTok{*}\NormalTok{q }\ControlFlowTok{for}\NormalTok{ r,q }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(rs, alt\_person)) }\OperatorTok{==} \DecValTok{1}\NormalTok{)}
+\NormalTok{    eb }\OperatorTok{=} \BuiltInTok{sum}\NormalTok{(b}\OperatorTok{*}\NormalTok{q }\ControlFlowTok{for}\NormalTok{ b,q }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(bs, alt\_person))}
+    \ControlFlowTok{for}\NormalTok{ name, val, exp, tol }\KeywordTok{in}\NormalTok{ [}
+\NormalTok{        (}\StringTok{\textquotesingle{}A5 target B\textquotesingle{}}\NormalTok{, bs[}\DecValTok{0}\NormalTok{], }\FloatTok{283.5}\NormalTok{, }\DecValTok{0}\NormalTok{),}
+\NormalTok{        (}\StringTok{\textquotesingle{}A5 other B\textquotesingle{}}\NormalTok{, bs[}\DecValTok{1}\NormalTok{], }\FloatTok{0.160475483}\NormalTok{, }\FloatTok{0.0000000005}\NormalTok{),}
+\NormalTok{        (}\StringTok{\textquotesingle{}A5 target event genotype alternative\textquotesingle{}}\NormalTok{, alt\_gen[}\DecValTok{0}\NormalTok{], }\FloatTok{0.002962963}\NormalTok{, }\FloatTok{0.0000000005}\NormalTok{),}
+\NormalTok{        (}\StringTok{\textquotesingle{}A5 B person{-}alternative mean\textquotesingle{}}\NormalTok{, eb, }\FloatTok{5.312103}\NormalTok{, }\FloatTok{0.0000005}\NormalTok{),}
+\NormalTok{        (}\StringTok{\textquotesingle{}A5 target R\textquotesingle{}}\NormalTok{, rs[}\DecValTok{0}\NormalTok{], }\FloatTok{46.2}\NormalTok{, }\DecValTok{0}\NormalTok{),}
+\NormalTok{        (}\StringTok{\textquotesingle{}A5 other R\textquotesingle{}}\NormalTok{, rs[}\DecValTok{1}\NormalTok{], }\FloatTok{0.162962963}\NormalTok{, }\FloatTok{0.0000000005}\NormalTok{)]:}
+\NormalTok{        rounded(name, val, exp, tol)}
+\NormalTok{        show(name, }\BuiltInTok{float}\NormalTok{(val))}
+    \CommentTok{\# A.6: four{-}state factored model with likelihoods proportional to 4 and 1.}
+\NormalTok{    likelihoods }\OperatorTok{=}\NormalTok{ [F(x}\OperatorTok{*}\NormalTok{y) }\ControlFlowTok{for}\NormalTok{ x,y }\KeywordTok{in}\NormalTok{ product((}\DecValTok{4}\NormalTok{,}\DecValTok{1}\NormalTok{), repeat}\OperatorTok{=}\DecValTok{2}\NormalTok{)]}
+\NormalTok{    check(}\StringTok{\textquotesingle{}A6 target posterior\textquotesingle{}}\NormalTok{, likelihoods[}\DecValTok{0}\NormalTok{] }\OperatorTok{/} \BuiltInTok{sum}\NormalTok{(likelihoods) }\OperatorTok{==}\NormalTok{ F(}\StringTok{\textquotesingle{}0.64\textquotesingle{}}\NormalTok{))}
+\NormalTok{    check(}\StringTok{\textquotesingle{}A6 every{-}locus alternative\textquotesingle{}}\NormalTok{, likelihoods[}\DecValTok{0}\NormalTok{] }\OperatorTok{/}\NormalTok{ likelihoods[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{] }\OperatorTok{==} \DecValTok{16}\NormalTok{)}
+\NormalTok{    rounded(}\StringTok{\textquotesingle{}A6 whole{-}profile alternative\textquotesingle{}}\NormalTok{, }\DecValTok{3}\OperatorTok{*}\NormalTok{likelihoods[}\DecValTok{0}\NormalTok{]}\OperatorTok{/}\BuiltInTok{sum}\NormalTok{(likelihoods[}\DecValTok{1}\NormalTok{:]), }\FloatTok{5.333333}\NormalTok{, }\FloatTok{0.0000005}\NormalTok{)}
+    \CommentTok{\# B.1: explicit source{-}posterior and occupancy formulas, not population enumeration.}
+\NormalTok{    f }\OperatorTok{=}\NormalTok{ F(}\DecValTok{1}\NormalTok{, }\DecValTok{1000000}\NormalTok{)}
+    \ControlFlowTok{for}\NormalTok{ k, exp, tol }\KeywordTok{in}\NormalTok{ [(}\DecValTok{100}\NormalTok{, }\FloatTok{0.999901}\NormalTok{, }\FloatTok{0.0000005}\NormalTok{),}
+\NormalTok{                        (}\DecValTok{10000}\NormalTok{, }\FloatTok{0.990100}\NormalTok{, }\FloatTok{0.0000005}\NormalTok{),}
+\NormalTok{                        (}\DecValTok{1000000}\NormalTok{, }\FloatTok{0.50000025}\NormalTok{, }\FloatTok{0.000000005}\NormalTok{)]:}
+\NormalTok{        val }\OperatorTok{=} \DecValTok{1} \OperatorTok{/}\NormalTok{ (}\DecValTok{1} \OperatorTok{+}\NormalTok{ (k}\OperatorTok{{-}}\DecValTok{1}\NormalTok{)}\OperatorTok{*}\NormalTok{f)}
+\NormalTok{        rounded(}\SpecialStringTok{f\textquotesingle{}B1 source posterior K=}\SpecialCharTok{\{}\NormalTok{k}\SpecialCharTok{\}}\SpecialStringTok{\textquotesingle{}}\NormalTok{, val, exp, tol)}
+\NormalTok{        show(}\SpecialStringTok{f\textquotesingle{}B1 source posterior K=}\SpecialCharTok{\{}\NormalTok{k}\SpecialCharTok{\}}\SpecialStringTok{\textquotesingle{}}\NormalTok{, }\BuiltInTok{float}\NormalTok{(val))}
+\NormalTok{    occupancy }\OperatorTok{=} \OperatorTok{{-}}\NormalTok{math.expm1(}\DecValTok{999999} \OperatorTok{*}\NormalTok{ math.log1p(}\OperatorTok{{-}}\BuiltInTok{float}\NormalTok{(f)))}
+\NormalTok{    rounded(}\StringTok{\textquotesingle{}B1 occupancy\textquotesingle{}}\NormalTok{, occupancy, }\FloatTok{0.632120}\NormalTok{, }\FloatTok{0.0000005}\NormalTok{)}
+\NormalTok{    show(}\StringTok{\textquotesingle{}B1 occupancy\textquotesingle{}}\NormalTok{, occupancy)}
+    \CommentTok{\# B.2: enumerate 55 genotypes; arbitrary positive split of unseen mass.}
+\NormalTok{    freq }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(}\BuiltInTok{map}\NormalTok{(F, [}\StringTok{\textquotesingle{}0.07\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}0.08\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}0.09\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}0.10\textquotesingle{}}\NormalTok{])) }\OperatorTok{+}\NormalTok{ [F(}\StringTok{\textquotesingle{}0.11\textquotesingle{}}\NormalTok{)] }\OperatorTok{*} \DecValTok{6}
+\NormalTok{    gs, ps }\OperatorTok{=}\NormalTok{ states(freq)}
+\NormalTok{    fit }\OperatorTok{=} \KeywordTok{lambda}\NormalTok{ g,h: }\BuiltInTok{set}\NormalTok{(g) }\OperatorTok{|} \BuiltInTok{set}\NormalTok{(h) }\OperatorTok{==} \BuiltInTok{set}\NormalTok{(}\BuiltInTok{range}\NormalTok{(}\DecValTok{4}\NormalTok{))}
+\NormalTok{    ll }\OperatorTok{=}\NormalTok{ [}\BuiltInTok{sum}\NormalTok{((p }\ControlFlowTok{for}\NormalTok{ h,p }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(gs,ps) }\ControlFlowTok{if}\NormalTok{ fit(g,h)), F(}\DecValTok{0}\NormalTok{)) }\ControlFlowTok{for}\NormalTok{ g }\KeywordTok{in}\NormalTok{ gs]}
+\NormalTok{    target }\OperatorTok{=}\NormalTok{ gs.index((}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\NormalTok{    uniform\_ll }\OperatorTok{=}\NormalTok{ [F(}\BuiltInTok{sum}\NormalTok{(fit(g,h) }\ControlFlowTok{for}\NormalTok{ h }\KeywordTok{in}\NormalTok{ gs), }\BuiltInTok{len}\NormalTok{(gs)) }\ControlFlowTok{for}\NormalTok{ g }\KeywordTok{in}\NormalTok{ gs]}
+\NormalTok{    bw }\OperatorTok{=} \DecValTok{54} \OperatorTok{*}\NormalTok{ ll[target] }\OperatorTok{/}\NormalTok{ (}\BuiltInTok{sum}\NormalTok{(ll) }\OperatorTok{{-}}\NormalTok{ ll[target])}
+\NormalTok{    bu }\OperatorTok{=} \DecValTok{54} \OperatorTok{*}\NormalTok{ uniform\_ll[target] }\OperatorTok{/}\NormalTok{ (}\BuiltInTok{sum}\NormalTok{(uniform\_ll) }\OperatorTok{{-}}\NormalTok{ uniform\_ll[target])}
+\NormalTok{    check(}\StringTok{\textquotesingle{}B2 genotype count and population sum\textquotesingle{}}\NormalTok{, }\BuiltInTok{len}\NormalTok{(gs) }\OperatorTok{==} \DecValTok{55} \KeywordTok{and} \BuiltInTok{sum}\NormalTok{(ps) }\OperatorTok{==} \DecValTok{1}\NormalTok{)}
+\NormalTok{    check(}\StringTok{\textquotesingle{}B2 six complementary likelihoods\textquotesingle{}}\NormalTok{, }\BuiltInTok{sorted}\NormalTok{(x }\ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in}\NormalTok{ ll }\ControlFlowTok{if}\NormalTok{ x) }\OperatorTok{==}
+          \BuiltInTok{sorted}\NormalTok{(}\BuiltInTok{map}\NormalTok{(F, [}\StringTok{\textquotesingle{}0.0180\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}0.0160\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}0.0144\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}0.0140\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}0.0126\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}0.0112\textquotesingle{}}\NormalTok{])))}
+\NormalTok{    rounded(}\StringTok{\textquotesingle{}B2 population nuisance B\textquotesingle{}}\NormalTok{, bw, }\FloatTok{10.470914}\NormalTok{, }\FloatTok{0.0000005}\NormalTok{)}
+\NormalTok{    check(}\StringTok{\textquotesingle{}B2 uniform nuisance B\textquotesingle{}}\NormalTok{, bu }\OperatorTok{==}\NormalTok{ F(}\StringTok{\textquotesingle{}10.8\textquotesingle{}}\NormalTok{))}
+\NormalTok{    show(}\StringTok{\textquotesingle{}B2 population nuisance B\textquotesingle{}}\NormalTok{, }\BuiltInTok{float}\NormalTok{(bw))}
+\NormalTok{    show(}\StringTok{\textquotesingle{}B2 uniform nuisance B\textquotesingle{}}\NormalTok{, }\BuiltInTok{float}\NormalTok{(bu))}
+    \CommentTok{\# B.3 and B.4: direct formula checks, not new generative{-}model validation.}
+    \ControlFlowTok{for}\NormalTok{ base, exp, tol }\KeywordTok{in}\NormalTok{ [(}\StringTok{\textquotesingle{}0.0144\textquotesingle{}}\NormalTok{, }\FloatTok{2.373763e{-}28}\NormalTok{, }\FloatTok{0.0000005e{-}28}\NormalTok{),}
+\NormalTok{                           (}\StringTok{\textquotesingle{}0.0862\textquotesingle{}}\NormalTok{, }\FloatTok{1.077976e{-}16}\NormalTok{, }\FloatTok{0.0000005e{-}16}\NormalTok{),}
+\NormalTok{                           (}\StringTok{\textquotesingle{}0.1156\textquotesingle{}}\NormalTok{, }\FloatTok{8.797667e{-}15}\NormalTok{, }\FloatTok{0.0000005e{-}15}\NormalTok{)]:}
+\NormalTok{        val }\OperatorTok{=} \BuiltInTok{float}\NormalTok{(F(base) }\OperatorTok{**} \DecValTok{15}\NormalTok{)}
+\NormalTok{        check(}\StringTok{\textquotesingle{}B3 \textquotesingle{}} \OperatorTok{+}\NormalTok{ base, }\BuiltInTok{abs}\NormalTok{(val}\OperatorTok{{-}}\NormalTok{exp) }\OperatorTok{\textless{}=}\NormalTok{ tol)}
+\NormalTok{        show(}\StringTok{\textquotesingle{}B3 \textquotesingle{}} \OperatorTok{+}\NormalTok{ base }\OperatorTok{+} \StringTok{\textquotesingle{} power 15\textquotesingle{}}\NormalTok{, val)}
+\NormalTok{    child }\OperatorTok{=}\NormalTok{ F(}\StringTok{\textquotesingle{}0.28\textquotesingle{}}\NormalTok{) }\OperatorTok{*}\NormalTok{ F(}\StringTok{\textquotesingle{}0.29\textquotesingle{}}\NormalTok{) }\OperatorTok{*}\NormalTok{ F(}\StringTok{\textquotesingle{}0.32\textquotesingle{}}\NormalTok{)}
+\NormalTok{    check(}\StringTok{\textquotesingle{}B4 child\textquotesingle{}}\NormalTok{, child }\OperatorTok{==}\NormalTok{ F(}\StringTok{\textquotesingle{}0.025984\textquotesingle{}}\NormalTok{))}
+\NormalTok{    check(}\StringTok{\textquotesingle{}B4 unrelated\textquotesingle{}}\NormalTok{, child }\OperatorTok{**} \DecValTok{2} \OperatorTok{==}\NormalTok{ F(}\StringTok{\textquotesingle{}0.000675168256\textquotesingle{}}\NormalTok{))}
+\NormalTok{    show(}\StringTok{\textquotesingle{}B4 child\textquotesingle{}}\NormalTok{, }\BuiltInTok{float}\NormalTok{(child))}
+\NormalTok{    show(}\StringTok{\textquotesingle{}B4 unrelated\textquotesingle{}}\NormalTok{, }\BuiltInTok{float}\NormalTok{(child }\OperatorTok{**} \DecValTok{2}\NormalTok{))}
+
+
+\KeywordTok{def}\NormalTok{ main():}
+    \BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}Numerical examples for:}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}
+          \StringTok{\textquotesingle{}Making Critical DNA Evidence Accessible: \textquotesingle{}}
+          \StringTok{\textquotesingle{}What Current Statistics Can Leave Unsaid for the Defense}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}
+          \StringTok{\textquotesingle{}With an AI Assistant and an Invitation to Open Review\textquotesingle{}}\NormalTok{)}
+\NormalTok{    show(}\StringTok{\textquotesingle{}Python\textquotesingle{}}\NormalTok{, platform.python\_version())}
+\NormalTok{    show(}\StringTok{\textquotesingle{}Implementation\textquotesingle{}}\NormalTok{, platform.python\_implementation())}
+    \ControlFlowTok{for}\NormalTok{ task }\KeywordTok{in}\NormalTok{ (strict, quantitative, supporting):}
+\NormalTok{        before }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(CHECKS)}
+\NormalTok{        task()}
+\NormalTok{        section }\OperatorTok{=}\NormalTok{ CHECKS[before:]}
+        \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f\textquotesingle{}Checks in section: }\SpecialCharTok{\{}\BuiltInTok{sum}\NormalTok{(ok }\ControlFlowTok{for}\NormalTok{ \_,ok }\KeywordTok{in}\NormalTok{ section)}\SpecialCharTok{\}}\SpecialStringTok{/}\SpecialCharTok{\{}\BuiltInTok{len}\NormalTok{(section)}\SpecialCharTok{\}}\SpecialStringTok{ passed\textquotesingle{}}\NormalTok{)}
+\NormalTok{    failures }\OperatorTok{=}\NormalTok{ [name }\ControlFlowTok{for}\NormalTok{ name, ok }\KeywordTok{in}\NormalTok{ CHECKS }\ControlFlowTok{if} \KeywordTok{not}\NormalTok{ ok]}
+    \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f\textquotesingle{}}\CharTok{\textbackslash{}n}\SpecialStringTok{TOTAL: }\SpecialCharTok{\{}\BuiltInTok{len}\NormalTok{(CHECKS)}\OperatorTok{{-}}\BuiltInTok{len}\NormalTok{(failures)}\SpecialCharTok{\}}\SpecialStringTok{/}\SpecialCharTok{\{}\BuiltInTok{len}\NormalTok{(CHECKS)}\SpecialCharTok{\}}\SpecialStringTok{ checks passed\textquotesingle{}}\NormalTok{)}
+    \ControlFlowTok{for}\NormalTok{ name }\KeywordTok{in}\NormalTok{ failures:}
+        \BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}FAIL:\textquotesingle{}}\NormalTok{, name)}
+    \BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}Check count includes related assertions, not independent validations.\textquotesingle{}}\NormalTok{)}
+    \ControlFlowTok{raise} \PreprocessorTok{SystemExit}\NormalTok{(}\DecValTok{1} \ControlFlowTok{if}\NormalTok{ failures }\ControlFlowTok{else} \DecValTok{0}\NormalTok{)}
+
+
+\ControlFlowTok{if} \VariableTok{\_\_name\_\_} \OperatorTok{==} \StringTok{\textquotesingle{}\_\_main\_\_\textquotesingle{}}\NormalTok{:}
+\NormalTok{    main()}
+\end{Highlighting}
+\end{Shaded}
+
+\section{S4. Numerical-results
+record}\label{s4.-numerical-results-record}
+
+The following reproduces the numerical portion of the recorded execution
+output. The execution environment was CPython 3.11.14. This is a
+numerical-results record, not a byte-for-byte transcript of the script's
+complete output header.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{STRICT: exact enumeration}
+\NormalTok{denominator: 189/156250}
+\NormalTok{A numerator: 7/500}
+\NormalTok{B numerator: 2/125}
+\NormalTok{A one{-}locus LR: 11.5740740740741}
+\NormalTok{B one{-}locus LR: 13.2275132275132}
+\NormalTok{joint LR: 0}
+\NormalTok{A thirteen{-}locus LR: 66883862868456}
+\NormalTok{B thirteen{-}locus LR: 379504262792686}
+\NormalTok{position profile posterior: 7.65656096662972e{-}11}
+\NormalTok{compatible position profiles: 13060694016}
+\NormalTok{compatibility mass: 0.0862}
+\NormalTok{inside{-}set mass: 0.1156}
+\NormalTok{Checks in section: 22/22 passed}
+
+\NormalTok{D/G: full genotype enumeration with log{-}sum{-}exp}
+\NormalTok{D1: R=1; w\_U=0.0476190476190476; w\_pi=0.0108; B=1}
+\NormalTok{D6: R=27.9507017179653; w\_U=0.541728524905921; w\_pi=0.301867578554025; B=23.64225374467}
+\NormalTok{D10: R=91.9452838579187; w\_U=0.99715830614309; w\_pi=0.993009065665522; B=7018.05582412408}
+\NormalTok{G1: R=6.17283949624454; w\_U=0.201837236145844; w\_pi=0.0666666665594411; B=5.05754578605535}
+\NormalTok{G4: R=63.6999391814617; w\_U=0.826855819812353; w\_pi=0.687959343159786; B=95.5106684979231}
+\NormalTok{G10: R=92.5923708630398; w\_U=0.999998747977069; w\_pi=0.999997605320831; B=15974128.3188332}
+\NormalTok{Checks in section: 78/78 passed}
+
+\NormalTok{SUPPORTING EXAMPLES: enumeration or explicit formulas as indicated}
+\NormalTok{A2 original R: 1.93548387096774}
+\NormalTok{A2 swapped R: 3.52941176470588}
+\NormalTok{A5 target B: 283.5}
+\NormalTok{A5 other B: 0.160475482912333}
+\NormalTok{A5 target event genotype alternative: 0.00296296296296}
+\NormalTok{A5 B person{-}alternative mean: 5.31210320140484}
+\NormalTok{A5 target R: 46.2}
+\NormalTok{A5 other R: 0.162962962962963}
+\NormalTok{B1 source posterior K=100: 0.99990100980003}
+\NormalTok{B1 source posterior K=10000: 0.99009999019801}
+\NormalTok{B1 source posterior K=1000000: 0.500000250000125}
+\NormalTok{B1 occupancy: 0.63212037488873}
+\NormalTok{B2 population nuisance B: 10.4709141274238}
+\NormalTok{B2 uniform nuisance B: 10.8}
+\NormalTok{B3 0.0144 power 15: 2.3737631379977e{-}28}
+\NormalTok{B3 0.0862 power 15: 1.07797574067054e{-}16}
+\NormalTok{B3 0.1156 power 15: 8.79766683331783e{-}15}
+\NormalTok{B4 child: 0.025984}
+\NormalTok{B4 unrelated: 0.000675168256}
+\NormalTok{Checks in section: 32/32 passed}
+
+\NormalTok{TOTAL: 132/132 checks passed}
+\NormalTok{Check count includes related assertions, not independent validations.}
+\end{Highlighting}
+\end{Shaded}
+
+In the output:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{R} is the common-model genotype-replacement LR defined in
+  manuscript Section 2.1.
+\item
+  \texttt{w\_U} is the target-genotype posterior under a uniform
+  target-genotype prior.
+\item
+  \texttt{w\_pi} is the target-genotype posterior under the
+  alternative-person population prior.
+\item
+  \texttt{B} is the uniform-reference different-genotype comparison
+  defined in manuscript Section 4.3.
+\item
+  \texttt{A2\ original} and \texttt{A2\ swapped} identify the two
+  likelihood assignments in Appendix A.2.
+\item
+  The labels \texttt{A1}--\texttt{A6} and \texttt{B1}--\texttt{B4} refer
+  to manuscript appendix subsections, not figure numbers.
+\end{itemize}
+
+The matched identity is
+
+\[
+R=\frac{w_\pi(t)}{f(t)}.
+\]
+
+It decomposes the same LR under compatible states, likelihoods, and
+nuisance treatment. It is not an independent statistic correcting the
+LR. The uniform-prior weight \(w_U(t)\) cannot be substituted for
+\(w_\pi(t)\).
+
+\section{S5. Figure inventory}\label{s5.-figure-inventory}
+
+The four figures are embedded in the current \texttt{manuscript.md} and
+included in its corresponding PDF. The separate SVG files are provided
+through the
+\href{https://github.com/mmiller-ForensicDNAexperts/Figures}{Figures
+repository}.
+
+Open that repository and obtain the files by the names below. The
+repository address is not a direct download link to any individual
+figure. The manuscript, supplement, guide, and separate SVG files need
+not share one hosting directory for readers to use these repository
+links.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Figure
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+File
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Manuscript location
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Content
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & \texttt{figure-1.svg} & Section 3.4 & Separate compatible pairs and
+incompatibility of A and B as the complete pair \\
+2 & \texttt{figure-2.svg} & Section 5 & Exact-target,
+strict-compatibility, and allele-set population filters \\
+3 & \texttt{figure-3.svg} & Section 6 & Example D: fixed target rarity
+with changing minor signal \\
+4 & \texttt{figure-4.svg} & Section 7 & Example G: the same allele
+channels with changing quantitative patterns \\
+\end{longtable}
+}
+
+\subsection{S5.1 Figure 1}\label{s5.1-figure-1}
+
+The diagram displays one locus of the strict two-contributor
+construction. Allele-copy symbols are not peak heights.
+
+A has genotype \(2/3\) and requires partner \(1/4\). B has genotype
+\(1/3\) and requires partner \(2/4\). The complete named pair lacks
+observed allele \(4\).
+
+The displayed full-profile LRs use thirteen independent loci. The joint
+zero applies to the complete named pair under complete observation
+without dropout, drop-in, or error. It is not a general exclusion of
+either person under larger mixtures or other observation mechanisms.
+
+\subsection{S5.2 Figure 2}\label{s5.2-figure-2}
+
+The nested sets represent different population events:
+
+\begin{itemize}
+\tightlist
+\item
+  Target genotype \(2/3\): probability \(0.0144\).
+\item
+  Six strict two-person-compatible heterozygotes: total probability
+  \(0.0862\).
+\item
+  Ten genotypes with both alleles in the observed set: total probability
+  \(0.1156\).
+\end{itemize}
+
+Cell areas do not represent probabilities. These population
+probabilities are not posterior probabilities of personal contribution.
+
+\subsection{S5.3 Figures 3 and 4}\label{s5.3-figures-3-and-4}
+
+The peak heights represent the deterministic channel signals in
+manuscript Section 14.3. Peak shapes and widths are schematic and do not
+enter the likelihood calculation.
+
+The SVG peak scales can be related to channel signals as follows:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+Figure & Vertical scale & Baseline coordinate \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+3: example D & 350 SVG coordinate units per signal unit & \(y=410\) \\
+4: example G & 550 SVG coordinate units per signal unit & \(y=410\) \\
+\end{longtable}
+}
+
+Thus, a positive channel signal \(s\) has a peak apex at \(410-350s\) in
+Figure 3 and \(410-550s\) in Figure 4, subject to decimal rounding in
+the SVG coordinates. Zero channels in Figure 3 are represented by short
+baseline marks.
+
+The target genotype is \(5/6\), with population probability \(0.0108\),
+throughout both figures. The displayed weight uses a uniform
+target-genotype prior and is not a named-person contribution
+probability. Other contributor genotypes in G are population-weighted.
+
+The Gaussian observation model has independent channel errors with
+\(\sigma=0.035\). It contains no laboratory dropout, drop-in, stutter,
+degradation, or detection-threshold mechanism. The illustrated settings
+are not independent loci.
+
+\subsection{S5.4 Display and printing}\label{s5.4-display-and-printing}
+
+The SVGs are vector images and can be enlarged without raster
+pixelation. Use a display or print size that keeps annotations legible;
+a landscape figure supplement is suitable for full-size presentation.
+
+Markdown viewers and AI systems differ in their handling of embedded SVG
+images and mathematical notation. Use the corresponding PDF or open the
+separate SVG files in a compatible viewer if the embedded figures are
+not displayed.
+
+PDF text extraction can disrupt equation and table reading order. For
+exact mathematical notation, consult the controlling Markdown or an
+inspectable PDF page rather than relying on uncertain extracted text.
+
+The complete captions are in the manuscript. Figures should be read with
+those captions and the corresponding model specifications.
+
+\end{document}
